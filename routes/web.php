@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReferensiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AdminController::class, 'index']);
-Route::get('/pelanggan', [AdminController::class, 'indexPelanggan']);
+
+// Pelanggan Routes
+Route::get('/pelanggan', [ReferensiController::class, 'indexPelanggan']);
+Route::get('/pelanggan/ubah/{id}', [ReferensiController::class, 'ubahPelanggan']);
+
+// Pelayanan Routes
+Route::get('/pelayanan', [ReferensiController::class, 'indexPelayanan']);
+Route::get('/pelayanan/ubah/{id}', [ReferensiController::class, 'ubahPelayanan']);
+
+// Pegawai Routes
+Route::get('/pegawai', [ReferensiController::class, 'indexPegawai']);
+Route::get('/pegawai/ubah/{id}', [ReferensiController::class, 'ubahPegawai']);

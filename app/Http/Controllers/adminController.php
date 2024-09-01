@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -9,9 +11,42 @@ class adminController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function akses()
+    {
+        return view('admin.akses', [
+            'title' => 'Akses Administrator',
+        ]);
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credit = $request->validate([
+            'email' => ['required'],
+            'password' => ['required'],
+        ]);
+ 
+        if (Auth::guard('admin')->attempt($credit)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
+ 
+        return back()->with('Notification', 'Akses Masuk Salah, Periksa lagi akses masuknya!');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return redirect('/administrator')->with('Notification', 'Logout Success!');
+    }
+
     public function index()
     {
-        return view('admin/dashboard', [
+        return view('admin.dashboard', [
             'title' => 'Dashboard',
             'active' => 'dashboard'
         ]);

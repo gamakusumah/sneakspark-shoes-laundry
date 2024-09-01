@@ -12,9 +12,27 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
+
+        {{-- toast --}}
+        @if (session()->has('Notification'))
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+            <div class="toast-container top-0 end-0 p-3">
+                <div class="show toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header b-primary">
+                    <strong class="me-auto">Notofikasi Baru!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        {{ session('Notification') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Sneakspark Shoes</a>
+            <a class="navbar-brand ps-3" href="/dashboard">Sneakspark Shoes</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -32,7 +50,12 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li>
+                            <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logout">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </button>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -42,7 +65,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <a class="nav-link" href="/">
+                            <a class="nav-link" href="/dashboard">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -76,7 +99,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Masuk sebagai:</div>
-                        Gama Kusumah
+                        {{ auth('admin')->user()->nama }}
                     </div>
                 </nav>
             </div>
@@ -84,10 +107,7 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">{{ $title }}</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">{{ $title }}</li>
-                        </ol>
-
+                        
                         <!-- Content -->
                         @yield('content')
                     </div>
@@ -101,10 +121,35 @@
                 </footer>
             </div>
         </div>
+
+        <!-- Logout -->
+        <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img class="mb-2 text-center" src="{{asset('images/icons/exit.png')}}" alt="exit" style="max-width: 200px;">
+                    <h4 class="bold-text" style="color: black">Logout!</h4>
+                    <p class="mb-2" style="color: black">are you sure you want to leave!</p>
+                </div>
+                <div class="d-flex justify-content-center mb-3">
+                <button type="button" class="btn btn-secondary" style="margin-right: 10px;" data-bs-dismiss="modal">Batal</button>
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-danger clickOne" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </button>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{{ asset('vendor/js/scripts.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="{{ asset('vendor/js/datatables-simple-demo.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>

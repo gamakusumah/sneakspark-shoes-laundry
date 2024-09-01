@@ -15,8 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AdminController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| Administrator Setting Routes
+|--------------------------------------------------------------------------
+*/
 
+Route::get('/administrator', [AdminController::class, 'akses'])->name('administrator')->middleware('guest');
+Route::post('/akses_admin', [AdminController::class, 'authenticate']);
+Route::post('/logout', [AdminController::class, 'logout']);
+
+Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware('auth:admin');
 /*
 |--------------------------------------------------------------------------
 | Referensi Routes
@@ -32,8 +41,13 @@ Route::get('/pelayanan', [ReferensiController::class, 'indexPelayanan']);
 Route::get('/pelayanan/ubah/{id}', [ReferensiController::class, 'ubahPelayanan']);
 
 // Pegawai Routes
-Route::get('/pegawai', [ReferensiController::class, 'indexPegawai']);
-Route::get('/pegawai/ubah/{id}', [ReferensiController::class, 'ubahPegawai']);
+Route::get('/pegawai', [ReferensiController::class, 'indexPegawai'])->name('pegawai')->middleware('auth:admin');
+Route::get('/ubahPegawai/{id}', [ReferensiController::class, 'ubahPegawai'])->name('ubahPegawai')->middleware('auth:admin');
+
+Route::post('/cPegawai', [ReferensiController::class, 'storePegawai']);
+Route::post('/uPegawai', [ReferensiController::class, 'updatePegawai']);
+Route::post('/uPasswordPegawai', [ReferensiController::class, 'updatePasswordPegawai']);
+Route::get('/dPegawai/{id}', [ReferensiController::class, 'destroyPegawai']);
 
 
 /*

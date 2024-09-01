@@ -1,5 +1,10 @@
 @extends('admin.layout.template')
 @section('content')
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{ $title }}</li>
+</ol>
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Tambah Pegawai
@@ -28,21 +33,21 @@
                 </tr>
             </tfoot>
             <tbody>
+                @foreach ($pegawais as $pegawai)
                 <tr>
-                    <td>Gama Kusumah</td>
-                    <td>089876554321</td>
-                    <td>gamakusumah@gmail.com</td>
-                    <td>Admin</td>
-                    <td>Jl. Jalan Jalan terus, Bandung, Jawa Barat</td>
+                    <td>{{$pegawai->nama}}</td>
+                    <td>{{$pegawai->no_tlp}}</td>
+                    <td>{{$pegawai->email}}</td>
+                    <td>{{$pegawai->role}}</td>
+                    <td>{{$pegawai->alamat}}</td>
                     <td>
-                        <a href="/pegawai/ubah/1" class="btn btn-outline-warning btn-sm">
+                        <a href="/ubahPegawai/{{$pegawai->id}}" class="btn btn-outline-warning btn-sm">
                             Ubah
                         </a>
-                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#alertModal">
-                            Hapus
-                        </button>
+                        <a href="/dPegawai/{{$pegawai->id}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are You Sure You Want to Delete This?')">Hapus</a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -57,65 +62,44 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/cPegawai" method="POST">
+                    @csrf
                     <div class="mb-3">
                         <label for="inputName" class="form-label">Nama Pegawai</label>
-                        <input type="text" class="form-control" id="inputName" required>
+                        <input type="text" class="form-control" id="inputName" name="nama" required>
                     </div>
                     <div class="mb-3">
                         <label for="noHandphone" class="form-label">No. Handphone</label>
-                        <input type="text" class="form-control" id="inputNoHandphone" required>
+                        <input type="text" class="form-control" id="inputNoHandphone" name="no_telp" required>
                     </div>
                     <div class="mb-3">
                         <label for="inputEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="inputEmail">
+                        <input type="email" class="form-control" id="inputEmail" name="email">
                     </div>
                     <div class="mb-3">
-                        <label for="selectPosition" class="form-label">Disabled select menu</label>
-                        <select id="selectPosition" class="form-select">
-                            <option>Pemilik</option>
-                            <option>Admin</option>
-                            <option>Resepsionis</option>
+                        <label for="selectPosition" class="form-label">Role / Fungsional</label>
+                        <select id="selectPosition" class="form-select" name="role">
+                            <option value="Owner">Owner</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Resepsionis">Resepsionis</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="inputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control  " id="inputPassword1">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputRetypePassword" class="form-label">Ketik Ulang Password</label>
-                        <input type="password" class="form-control" id="inputRetypePassword">
+                        <input type="password" class="form-control" name="password" id="inputPassword1">
                     </div>
                     <div class="mb-3">
                         <label for="inputAddress" class="form-label">Alamat</label>
-                        <textarea class="form-control" id="inputAddress" rows="4"></textarea>
+                        <textarea class="form-control" id="inputAddress" rows="4" name="alamat"></textarea>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary">Simpan</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<!-- Alert Modal -->
-<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Hapus data pelanggan?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apakah Anda yakin ingin menghpaus data pelanggan ini?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-danger">Hapus</button>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

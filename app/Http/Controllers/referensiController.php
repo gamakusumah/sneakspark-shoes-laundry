@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Pegawai;
 
 class referensiController extends Controller
 {
@@ -49,15 +52,17 @@ class referensiController extends Controller
     {
         return view('admin.referensi.pegawai.pegawai', [
             'title' => 'Pegawai',
-            'active' => 'pegawai'
+            'active' => 'pegawai',
+            'pegawais' => Pegawai::all(),
         ]);
     }
 
-    public function ubahPegawai()
+    public function ubahPegawai($id)
     {
         return view('admin.referensi.pegawai.ubahPegawai', [
             'title' => 'Ubah Data Pegawai',
-            'active' => 'ubah-data-pegawai'
+            'active' => 'ubah-data-pegawai',
+            'pegawai' => Pegawai::find($id),
         ]);
     }
 
@@ -72,9 +77,21 @@ class referensiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function storePegawai(Request $request)
     {
-        //
+        DB::table('pegawais')->insertOrIgnore([
+            'nama' => $request->nama,
+            'no_tlp' => $request->no_telp,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'alamat' => $request->alamat,
+            'role' => $request->role,
+            'status' => 'Aktif',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('pegawai')->with('Notification', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -96,16 +113,41 @@ class referensiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updatePegawai(Request $request)
     {
-        //
+        DB::table('pegawais')
+            ->where('id', $request->idPegawai)
+            ->update([
+                'nama' => $request->nama,
+                'no_tlp' => $request->no_telp,
+                'email' => $request->email,
+                'alamat' => $request->alamat,
+                'role' => $request->role,
+                'status' => 'Aktif',
+                'updated_at' => now(),
+            ]);
+
+        return redirect()->route('ubahPegawai', ['id' => $request->idPegawai])->with('Notification', 'Data Berhasil Diperbaharui!');
+    }
+    
+    public function updatePasswordPegawai(Request $request)
+    {
+        DB::table('pegawais')
+            ->where('id', $request->idPegawai)
+            ->update([
+                'password' => bcrypt($request->password),
+                'updated_at' => now(),
+            ]);
+
+        return redirect()->route('ubahPegawai', ['id' => $request->idPegawai])->with('Notification', 'Password Berhasil Diperbaharui!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroyPegawai(string $id)
     {
-        //
+        Pegawai::destroy($id);
+        return redirect()->route('pegawai')->with('Notification', 'Data Berhasil Dihapus!');
     }
 }

@@ -13,7 +13,7 @@ class referensiController extends Controller
     //  Pelanggan Controller
     public function indexPelanggan()
     {
-        return view('admin.pelanggan.pelanggan', [
+        return view('admin.referensi.pelanggan.pelanggan', [
             'title' => 'Pelanggan',
             'active' => 'pelanggan'
         ]);
@@ -21,7 +21,7 @@ class referensiController extends Controller
 
     public function ubahPelanggan()
     {
-        return view('admin.pelanggan.ubahPelanggan', [
+        return view('admin.referensi.pelanggan.ubahPelanggan', [
             'title' => 'Ubah Data Pelanggan',
             'active' => 'ubah-data-pelanggan'
         ]);
@@ -30,7 +30,7 @@ class referensiController extends Controller
     // Pelayanan Controller
     public function indexPelayanan()
     {
-        return view('admin.pelayanan.pelayanan', [
+        return view('admin.referensi.pelayanan.pelayanan', [
             'title' => 'Pelayanan',
             'active' => 'pelayanan'
         ]);
@@ -38,7 +38,7 @@ class referensiController extends Controller
 
     public function ubahPelayanan()
     {
-        return view('admin.pelayanan.ubahPelayanan', [
+        return view('admin.referensi.pelayanan.ubahPelayanan', [
             'title' => 'Ubah Data Pelayanan',
             'active' => 'ubah-data-pelayanan'
         ]);
@@ -47,7 +47,7 @@ class referensiController extends Controller
     // pegawai Controller
     public function indexPegawai()
     {
-        return view('admin.pegawai.pegawai', [
+        return view('admin.referensi.pegawai.pegawai', [
             'title' => 'Pegawai',
             'active' => 'pegawai'
         ]);
@@ -55,7 +55,7 @@ class referensiController extends Controller
 
     public function ubahPegawai()
     {
-        return view('admin.pegawai.ubahPegawai', [
+        return view('admin.referensi.pegawai.ubahPegawai', [
             'title' => 'Ubah Data Pegawai',
             'active' => 'ubah-data-pegawai'
         ]);

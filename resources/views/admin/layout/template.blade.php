@@ -60,7 +60,7 @@
                                 Pegawai
                             </a>
                             <div class="sb-sidenav-menu-heading">TRANSAKSI</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="/pesanan">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill"></i></div>
                                 Pesanan
                             </a>

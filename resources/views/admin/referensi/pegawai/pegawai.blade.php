@@ -71,7 +71,7 @@
                         <input type="email" class="form-control" id="inputEmail">
                     </div>
                     <div class="mb-3">
-                        <label for="selectPosition" class="form-label">Disabled select menu</label>
+                        <label for="selectPosition" class="form-label">Posisi</label>
                         <select id="selectPosition" class="form-select">
                             <option>Pemilik</option>
                             <option>Admin</option>

@@ -7,6 +7,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>{{ $title }} - Sneakspark Shoes Laundry</title>
+
+        <link rel="icon" href="{{asset('img/sneakspark-logo.png')}}" type="image/x-icon">
+
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{ asset('vendor/css/styles.css') }}" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -33,7 +36,7 @@
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="/dashboard"><img src="/img/sneakspark-logo.png" width="50" /><span> Sneakspark</span>Sneakspark Shoes</a>
+            <a class="navbar-brand ps-3" href="/dashboard"><img src="{{ asset('img/sneakspark-logo.png') }}" width="50" /><span> Sneakspark</span></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -71,10 +74,17 @@
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">DATA REFERENSI</div>
-                            <a class="nav-link" href="/pelayanan">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-rectangle-list"></i></div>
-                                Pelayanan
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pelayanan" aria-expanded="false" aria-controls="pelayanan">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Layanan
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            <div class="collapse" id="pelayanan" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/pelayanan">Pelayanan</a>
+                                    <a class="nav-link" href="/kategori">Kategori</a>
+                                </nav>
+                            </div>
                             <a class="nav-link" href="/pelanggan">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                                 Pelanggan

@@ -74,10 +74,17 @@
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">DATA REFERENSI</div>
-                            <a class="nav-link" href="/pelayanan">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-rectangle-list"></i></div>
-                                Pelayanan
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pelayanan" aria-expanded="false" aria-controls="pelayanan">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Layanan
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            <div class="collapse" id="pelayanan" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/pelayanan">Pelayanan</a>
+                                    <a class="nav-link" href="/kategori">Kategori</a>
+                                </nav>
+                            </div>
                             <a class="nav-link" href="/pelanggan">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                                 Pelanggan

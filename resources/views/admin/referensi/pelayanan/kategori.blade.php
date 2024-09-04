@@ -1,6 +1,5 @@
 @extends('admin.layout.template')
 @section('content')
-
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">{{ $title }}</li>
 </ol>
@@ -14,34 +13,27 @@
         <table id="datatablesSimple">
             <thead>
                 <tr>
-                    <th>Nama Pelayanan</th>
-                    <th>Harga</th>
-                    <th>Kategori</th>
+                    <th>Nama Kategori</th>
                     <th>Deskripsi</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Nama</th>
-                    <th>Harga</th>
-                    <th>Kategori</th>
-                    <th>Deskripsi</th>
+                    <th>Nama Kategori</th>
                     <th>Aksi</th>
                 </tr>
             </tfoot>
             <tbody>
-                @foreach ($layanans as $layanan)
+                @foreach ($kategoris as $kategori)
                 <tr>
-                    <td>{{$layanan->nama_layanan}}</td>
-                    <td>{{number_format($layanan->harga,0,',','.')}}</td>
-                    <td>{{$layanan->kategori}}</td>
-                    <td>{{$layanan->deskripsi}}</td>
+                    <td>{{$kategori->nama}}</td>
+                    <td>{{$kategori->keterangan}}</td>
                     <td>
-                        <a href="/ubahLayanan/{{$layanan->id}}" class="btn btn-outline-warning btn-sm">
+                        <a href="/ubahKategori/{{$kategori->id}}" class="btn btn-outline-warning btn-sm">
                             Ubah
                         </a>
-                        <a href="/dLayanan/{{$layanan->id}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are You Sure You Want to Delete This?')">Hapus</a>
+                        <a href="/dKategori/{{$kategori->id}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are You Sure You Want to Delete This?')">Hapus</a>
                     </td>
                 </tr>
                 @endforeach
@@ -55,27 +47,15 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Pelayanan</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/cLayanan" method="POST">
+            <form action="/cKategori" method="POST">
                 @csrf
             <div class="modal-body">
                     <div class="mb-3">
-                        <label for="inputName" class="form-label">Nama Pelayanan</label>
-                        <input type="text" class="form-control" id="inputName" name="layanan" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Harga Pelayanan</label>
-                        <input type="number" class="form-control" id="inputPrice" name="harga" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="selectPosition" class="form-label">Kategori</label>
-                        <select id="selectPosition" class="form-select" name="kategori">
-                            @foreach ($kategoris as $kategori)
-                            <option value="{{$kategori->id}}">{{$kategori->nama}}</option>
-                            @endforeach
-                        </select>
+                        <label for="inputName" class="form-label">Nama Kategori</label>
+                        <input type="text" class="form-control" id="inputName" name="kategori" required>
                     </div>
                     <div class="mb-3">
                         <label for="inputDescription" class="form-label">Deskripsi</label>
@@ -90,5 +70,4 @@
             </form>
     </div>
 </div>
-
 @endsection

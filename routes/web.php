@@ -37,8 +37,18 @@ Route::get('/pelanggan', [ReferensiController::class, 'indexPelanggan']);
 Route::get('/pelanggan/ubah/{id}', [ReferensiController::class, 'ubahPelanggan']);
 
 // Pelayanan Routes
-Route::get('/pelayanan', [ReferensiController::class, 'indexPelayanan']);
-Route::get('/pelayanan/ubah/{id}', [ReferensiController::class, 'ubahPelayanan']);
+Route::get('/pelayanan', [ReferensiController::class, 'indexPelayanan'])->name('layanan')->middleware('auth:admin');
+Route::get('/ubahLayanan/{id}', [ReferensiController::class, 'ubahPelayanan'])->name('ubahLayanan')->middleware('auth:admin');
+Route::post('/cLayanan', [ReferensiController::class, 'storeLayanan']);
+Route::get('/dLayanan/{id}', [ReferensiController::class, 'destroyLayanan']);
+Route::post('/uLayanan', [ReferensiController::class, 'updateLayanan']);
+
+// Kategori
+Route::get('/kategori', [ReferensiController::class, 'indexKategori'])->name('kategori')->middleware('auth:admin');
+Route::post('/cKategori', [ReferensiController::class, 'storeKategori']);
+Route::get('/dKategori/{id}', [ReferensiController::class, 'destroyKategori']);
+Route::get('/ubahKategori/{id}', [ReferensiController::class, 'ubahKategori'])->name('ubahKategori')->middleware('auth:admin');
+Route::post('/uKategori', [ReferensiController::class, 'updateKategori']);
 
 // Pegawai Routes
 Route::get('/pegawai', [ReferensiController::class, 'indexPegawai'])->name('pegawai')->middleware('auth:admin');

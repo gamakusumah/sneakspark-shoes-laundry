@@ -11,9 +11,17 @@ class orderController extends Controller
      */
     public function checkout()
     {
-        return view('user.order.Checkout', [
+        return view('user.order.checkout', [
             'title' => 'Pesan Layanan',
             'active' => 'pesan-layanan',
+        ]);
+    }
+
+    public function pembayaran()
+    {
+        return view('user.order.pembayaran', [
+            'title' => 'Pembayaran',
+            'active' => 'pembayaran',
         ]);
     }
 

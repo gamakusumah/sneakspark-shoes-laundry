@@ -137,7 +137,7 @@
 
                     <hr class="my-4">
 
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Lanjut Ke Pembayaran</button>
+                    <a class="w-100 btn btn-primary btn-lg" href="/pembayaran" type="submit">Lanjut Ke Pembayaran</a>
                 </form>
             </div>
         </div>

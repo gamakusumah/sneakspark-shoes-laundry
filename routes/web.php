@@ -89,3 +89,4 @@ Route::get('/daftar', [AuthController::class, 'register']);
 
 // Order Routes
 Route::get('/pesan', [OrderController::class, 'checkout']);
+Route::get('/pembayaran', [OrderController::class, 'pembayaran']);

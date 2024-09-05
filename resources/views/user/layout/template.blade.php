@@ -41,6 +41,8 @@
                     </li>
                 </ul>
             </div>
+
+            <a class="btn btn-outline-light px-4 ms-4" href="/login">Masuk</a>
         </div>
     </nav>
 

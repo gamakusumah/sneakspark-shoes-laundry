@@ -2,6 +2,9 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReferensiController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,3 +73,20 @@ Route::get('/dPegawai/{id}', [ReferensiController::class, 'destroyPegawai']);
 Route::get('/pesanan', [TransaksiController::class, 'indexPesanan']);
 Route::get('/pesanan/tambah', [TransaksiController::class, 'tambahPesanan']);
 Route::get('/pesanan/ubah/{id}', [TransaksiController::class, 'ubahPesanan']);
+
+
+/*
+|--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
+
+// Auth Routes
+Route::get('/', [UserController::class, 'index']);
+Route::get('/login', [AuthController::class, 'login']);
+Route::get('/daftar', [AuthController::class, 'register']);
+
+
+// Order Routes
+Route::get('/pesan', [OrderController::class, 'checkout']);
+Route::get('/pembayaran', [OrderController::class, 'pembayaran']);

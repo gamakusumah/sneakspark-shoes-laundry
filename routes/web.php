@@ -5,6 +5,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -90,3 +91,9 @@ Route::get('/daftar', [AuthController::class, 'register']);
 // Order Routes
 Route::get('/pesan', [OrderController::class, 'checkout']);
 Route::get('/pembayaran', [OrderController::class, 'pembayaran']);
+
+// Profile Routes
+Route::get('/profil', [ProfilController::class, 'profil']);
+Route::get('/profil/ubah', [ProfilController::class, 'ubahProfil']);
+Route::get('/profil/ubah-password', [ProfilController::class, 'ubahPassword']);
+Route::get('/riwayat', [ProfilController::class, 'riwayatPesanan']);

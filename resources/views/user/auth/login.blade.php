@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('content')
-<div class="mx-auto text-center mt-5" style="max-width: 420px;">
+<div class="mx-auto text-center" style="padding: 9rem 0; max-width: 420px;">
     <form>
         <img class="mb-4" src="/img/sneakspark-logo-black.png" alt="" width="120" height="120">
         <h1 class="h3 mb-3 fw-normal">Silahkan masuk</h1>

@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('content')
-<div class="container">
+<div class="container" style="padding: 9rem 0;">
     <main>
         <div class="py-5 text-center">
             <img class="d-block mx-auto mb-4" src="/img/sneakspark-logo-black.png" alt="" width="150" height="150">

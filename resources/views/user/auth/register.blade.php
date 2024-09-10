@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('content')
-<div class="mx-auto text-center mt-5" style="max-width: 420px;">
+<div class="mx-auto text-center" style="padding: 9rem 0; max-width: 420px;">
     <form>
         <img class="mb-4" src="/img/sneakspark-logo-black.png" alt="" width="120" height="120">
         <h1 class="h3 mb-3 fw-normal">Silahkan daftar</h1>
@@ -27,7 +27,6 @@
         </div>
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">Daftar</button>
-        <p class="mt-5 mb-3 text-muted">© 2024</p>
     </form>
 </div>
 @endsection

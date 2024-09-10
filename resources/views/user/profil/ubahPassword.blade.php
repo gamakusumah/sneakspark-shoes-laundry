@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('content')
-<div class="mx-auto mt-5" style="max-width: 420px;">
+<div class="mx-auto mt-5" style="padding: 9rem 0; max-width: 420px;">
     <form>
         <h1 class="h3 mb-3 fw-normal">Ubah Password</h1>
         <hr />

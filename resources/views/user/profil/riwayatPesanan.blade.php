@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('content')
-<div class="mx-auto mt-5 container">
+<div class="mx-auto mt-5 container" style="padding: 9rem 0;">
     <h1 class="h3 mb-5 fw-normal text-center">Riwayat Pesanan</h1>
 
     <div class="card p-4 mb-4">

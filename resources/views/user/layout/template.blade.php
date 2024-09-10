@@ -14,8 +14,8 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+<body">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
         <div class="container">
             <a class="navbar-brand ps-3" href="/"><img src="/img/sneakspark-logo.png" width="50" /><span> Sneakspark</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,19 +25,19 @@
             <div class="collapse navbar-collapse" id="navbarsExample07">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#tentang">Tentang Kami</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
+                        <a class="nav-link" href="#layanan">Layanan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Testimoni</a>
+                        <a class="nav-link" href="#testimoni">Testimoni</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Gallery</a>
+                        <a class="nav-link" href="#galeri">Galeri</a>
                     </li>
                     <li class="nav-item me-4">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#kontak">Kontak</a>
                     </li>
                     <li class="nav-item me-4">
                         <a class="btn btn-outline-light px-4" href="/login">Masuk</a>
@@ -66,9 +66,9 @@
         @yield('content')
     </main>
 
-    <footer class="bg-body-tertiary text-center text-lg-start">
+    <footer class="bg-white text-center text-lg-start border-top">
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        <div class="text-center p-3">
             © 2024 Copyright : Sneakspark Shoes Laundry
         </div>
         <!-- Copyright -->

@@ -28,7 +28,6 @@
         </div>
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">Daftar</button>
-        <p class="mt-5 mb-3 text-muted">© 2024</p>
     </form>
 </div>
 @endsection

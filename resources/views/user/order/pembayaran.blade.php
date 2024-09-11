@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('content')
-<div class="mx-auto text-center mt-5" style="max-width: 420px;">
+<div class="mx-auto text-center mt-5" style="padding: 9rem 0; max-width: 420px;">
     <form>
         <img class="" src="/img/sneakspark-logo-black.png" alt="" width="150" height="150">
         <h1 class="h4 mb-5 mt-2 fw-bold">Selesaikan Pembayaran</h1>

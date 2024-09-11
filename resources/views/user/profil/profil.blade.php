@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('content')
-<section class="container pt-5">
+<section class="container" style="padding: 9rem 0;">
     <div class="mb-3" style="border-radius: .5rem;">
         <div class="row g-0">
             <div class="col-md-4 gradient-custom text-center"

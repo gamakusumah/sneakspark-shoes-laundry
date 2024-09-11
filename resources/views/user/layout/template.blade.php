@@ -45,19 +45,19 @@
             <div class="collapse navbar-collapse" id="navbarsExample07">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#tentang">Tentang Kami</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
+                        <a class="nav-link" href="#layanan">Layanan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Testimoni</a>
+                        <a class="nav-link" href="#testimoni">Testimoni</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Gallery</a>
+                        <a class="nav-link" href="#galeri">Galeri</a>
                     </li>
                     <li class="nav-item me-4">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#kontak">Kontak</a>
                     </li>
                     @if (auth('web')->check() && auth('web')->user()->name)
                         <li class="nav-item dropdown">
@@ -84,8 +84,6 @@
                             <a class="btn btn-outline-light px-4" href="/login">Masuk</a>
                         </li>
                     @endif
-
-            
                 </ul>
             </div>
 
@@ -119,6 +117,13 @@
         </div>
         </div>
     </div>
+    <footer class="bg-white text-center text-lg-start border-top">
+        <!-- Copyright -->
+        <div class="text-center p-3">
+            © 2024 Copyright : Sneakspark Shoes Laundry
+        </div>
+        <!-- Copyright -->
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="{{ asset('vendor/js/scripts.js') }}"></script>

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+
+
+use App\Models\Pemesan;
 
 class transaksiController extends Controller
 {
@@ -19,9 +24,35 @@ class transaksiController extends Controller
 
     public function tambahPesanan()
     {
+        // Ambil ID terakhir dari tabel 'pemesans'
+        $lastId = DB::table('pemesans')->latest('id')->value('id') ?? 0;
+        // Tentukan nomor urut baru
+        $newOrderNumber = $lastId + 1;
+
+        // Buat kode acak, misalnya 4 karakter alfanumerik
+        $randomCode = Str::upper(Str::random(4));
+
+        // Gabungkan menjadi format 'SNP-kode-random-no_urut'
+        $kodePesanan = "SNP-{$randomCode}-0{$newOrderNumber}";
+
+        DB::table('pemesans')->insertOrIgnore([
+            'kode_pesanan' => $kodePesanan,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Mengambil nilai ID terakhir dari tabel 'pemesans'
+        $currentId = DB::table('pemesans')->latest('id')->value('id');
+        
+        return redirect()->route('showPesanan', ['id' => $currentId])->with('Notification', 'Pesanan Berhasil Dibuat! Silahkan isi Detail Pesanan!');
+    }
+    
+    public function showPesanan($id)
+    {      
         return view('admin.transaksi.pesanan.tambahPesanan', [
             'title' => 'Tambah Pesanan',
-            'active' => 'tambah-pesanan'
+            'active' => 'tambah-pesanan',
+            'pemesan' => Pemesan::find($id),
         ]);
     }
 

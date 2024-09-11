@@ -1,16 +1,17 @@
 @extends('user.layout.template')
 @section('content')
 <div class="mx-auto text-center mt-5" style="max-width: 420px;">
-    <form>
+    <form action="/login" method="POST">
+        @csrf
         <img class="mb-4" src="/img/sneakspark-logo-black.png" alt="" width="120" height="120">
         <h1 class="h3 mb-3 fw-normal">Silahkan masuk</h1>
 
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="nama@contoh.com">
+            <input type="email" class="form-control" id="floatingInput" name="email" placeholder="nama@contoh.com">
             <label for="floatingInput">Email</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
 

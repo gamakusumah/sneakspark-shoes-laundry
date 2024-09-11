@@ -14,6 +14,7 @@
         <link href="{{ asset('vendor/css/styles.css') }}" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body class="sb-nav-fixed">
 
@@ -36,11 +37,7 @@
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-<<<<<<< Updated upstream
             <a class="navbar-brand ps-3" href="/dashboard"><img src="{{ asset('img/sneakspark-logo.png') }}" width="50" /><span> Sneakspark</span></a>
-=======
-            <a class="navbar-brand ps-3" href="/"><img src="/img/sneakspark-logo.png" width="50" /><span> Sneakspark</span></a>
->>>>>>> Stashed changes
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->

@@ -7,7 +7,7 @@
                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                 <img src="/img/profil.png"
                     alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                <h5>Marie Horwitz</h5>
+                <h5>{{ auth('web')->user()->name }}</h5>
             </div>
             <div class="col-md-8">
                 <div class="card-body p-4">
@@ -16,15 +16,15 @@
                     <div class="row pt-1">
                         <div class="col-6 mb-3">
                             <h6>Email</h6>
-                            <p class="text-muted">info@example.com</p>
+                            <p class="text-muted">{{ auth('web')->user()->email }}</p>
                         </div>
                         <div class="col-6 mb-3">
                             <h6>No Handphone</h6>
-                            <p class="text-muted">08123456789</p>
+                            <p class="text-muted">{{ auth('web')->user()->no_tlp }}</p>
                         </div>
                         <div class="col-12 mb-3">
                             <h6>Alamat</h6>
-                            <p class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi doloremque repudiandae omnis veniam eaque architecto, mollitia voluptatem esse maiores tenetur, magni, officiis quo culpa voluptate! Accusamus rem vero vitae doloribus!</p>
+                            <p class="text-muted">{{ auth('web')->user()->alamat }}</p>
                         </div>
                         <hr />
                         <div class="col-12 mb-3">

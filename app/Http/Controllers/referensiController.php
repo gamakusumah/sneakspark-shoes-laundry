@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Pegawai;
 use App\Models\Kategori;
 use App\Models\Layanan;
+use App\Models\User;
 
 class referensiController extends Controller
 {
@@ -20,7 +21,8 @@ class referensiController extends Controller
     {
         return view('admin.referensi.pelanggan.pelanggan', [
             'title' => 'Pelanggan',
-            'active' => 'pelanggan'
+            'active' => 'pelanggan',
+            'pelanggans' => User::all(),
         ]);
     }
 

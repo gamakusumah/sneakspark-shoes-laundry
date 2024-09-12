@@ -74,7 +74,7 @@ Route::get('/dPegawai/{id}', [ReferensiController::class, 'destroyPegawai']);
 Route::get('/pesanan', [TransaksiController::class, 'indexPesanan']);
 Route::get('/pesanan/tambah', [TransaksiController::class, 'tambahPesanan']);
 Route::get('/pesanan/ubah/{id}', [TransaksiController::class, 'ubahPesanan']);
-
+Route::get('/pesanan/faktur', [TransaksiController::class, 'fakturPesanan']);
 
 /*
 |--------------------------------------------------------------------------

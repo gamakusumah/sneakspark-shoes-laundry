@@ -33,6 +33,14 @@ class transaksiController extends Controller
         ]);
     }
 
+    public function fakturPesanan()
+    {
+        return view('admin.transaksi.pesanan.faktur', [
+            'title' => 'Faktur',
+            'active' => 'faktur'
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

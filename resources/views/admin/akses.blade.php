@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+
+        <link rel="icon" href="{{asset('img/sneakspark-logo.png')}}" type="image/x-icon">
         
         <title>Sneakspark Shoes | {{$title}}</title>
         <link href="{{asset('vendor/css/styles.css')}}" rel="stylesheet" />

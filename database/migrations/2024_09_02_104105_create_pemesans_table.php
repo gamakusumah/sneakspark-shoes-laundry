@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('pemesans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user')->nullable();
-            $table->string('nama');
-            $table->string('no_tlp');
-            $table->string('email');
-            $table->string('alamat');
+            $table->string('kode_pesanan')->nullable();
+            $table->string('nama')->nullable();
+            $table->string('no_tlp')->nullable();
+            $table->string('email')->nullable();
+            $table->string('alamat')->nullable();
             $table->timestamps();
         });
     }

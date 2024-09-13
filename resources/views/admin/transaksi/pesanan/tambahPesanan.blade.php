@@ -1,6 +1,11 @@
 @extends('admin.layout.template')
 @section('content')
 
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Pesanan</li>
+    <li class="breadcrumb-item active">#{{ $pemesan->kode_pesanan }}</li>
+</ol>
+
 <div class="row">
     <div class="col">
         <form>

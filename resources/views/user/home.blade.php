@@ -1,11 +1,11 @@
 @extends('user.layout.template')
 @section('content')
-<div class="position-relative overflow-hidden text-center bg-light" style="margin-top: 4.75rem; background-image: url('/img/hero.webp'); background-size: cover; height: calc(100vh - 4.75rem); background-position: center;">
+<div class="position-relative overflow-hidden text-center bg-light" style="background-image: url('/img/hero.webp'); background-size: cover; height: calc(100vh - 4.75rem); background-position: center;">
     <div style="background-color: black; position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.6;"></div>
     <div class="col-md-5 mx-auto d-flex flex-column align-items-center justify-content-center" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;">
         <h1 class="display-4 fw-bold" style="color: white;">Sneakspark Shoes Laundry</h1>
         <p class="lead fw-normal" style="color: #CED4DA;">Perawatan profesional untuk sepatu dan tas dengan teknik khusus, menggunakan alat dan bahan premium. Kepuasan dan kualitas terbaik di setiap layanan.</p>
-        <a class="btn btn-outline-light mt-4" href="/login">Pesan Sekarang</a>
+        <a class="btn btn-outline-light px-4 py-2 mt-4" href="/pesan">Pesan Sekarang</a>
     </div>
 </div>
 

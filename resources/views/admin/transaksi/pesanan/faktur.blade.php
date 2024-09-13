@@ -76,4 +76,56 @@
     <p class="mt-5 mb-3">Salam hangat</p>
     <p>Sneakspark Laundry Shoes</p>
 </div>
+
+<!-- Laporan -->
+
+<div>
+    <div class="text-center mb-4">
+        <h3>Laporan Pemasukan Sneakspark Shoes Laundry</h3>
+        <p>22 Februari 2024 - 17 Mei 2024</p>
+    </div>
+
+    <div>
+        <table class="">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tanggal</th>
+                    <th>Id Pesanan</th>
+                    <th>Layanan</th>
+                    <th>Total Pembayaran</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>22 Februari 2024</td>
+                    <td>John Doe</td>
+                    <td>Adidas Samba</td>
+                    <td>Rp80.000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>22 Februari 2024</td>
+                    <td>John Doe</td>
+                    <td>Adidas Samba</td>
+                    <td>Rp80.000</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>22 Februari 2024</td>
+                    <td>John Doe</td>
+                    <td>Adidas Samba</td>
+                    <td>Rp80.000</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4" class="text-end">Total Pemasukan</th>
+                    <th>Rp240.000</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
 @endsection

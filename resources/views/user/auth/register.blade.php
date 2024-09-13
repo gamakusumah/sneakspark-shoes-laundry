@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('content')
-<div class="mx-auto text-center mt-5" style="max-width: 420px;">
+<div class="mx-auto text-center mt-5" style="max-width: 420px; margin-bottom: 72px;">
     <form action="/register" method="POST">
         @csrf
         <img class="mb-4" src="/img/sneakspark-logo-black.png" alt="" width="120" height="120">

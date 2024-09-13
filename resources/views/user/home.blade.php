@@ -1,11 +1,11 @@
 @extends('user.layout.template')
 @section('content')
-<div class="position-relative overflow-hidden text-center bg-light" style="margin-top: 4.75rem; background-image: url('/img/hero.webp'); background-size: cover; height: calc(100vh - 4.75rem); background-position: center;">
+<div class="position-relative overflow-hidden text-center bg-light" style="background-image: url('/img/hero.webp'); background-size: cover; height: calc(100vh - 4.75rem); background-position: center;">
     <div style="background-color: black; position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.6;"></div>
     <div class="col-md-5 mx-auto d-flex flex-column align-items-center justify-content-center" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;">
         <h1 class="display-4 fw-bold" style="color: white;">Sneakspark Shoes Laundry</h1>
         <p class="lead fw-normal" style="color: #CED4DA;">Perawatan profesional untuk sepatu dan tas dengan teknik khusus, menggunakan alat dan bahan premium. Kepuasan dan kualitas terbaik di setiap layanan.</p>
-        <a class="btn btn-outline-light mt-4" href="/login">Pesan Sekarang</a>
+        <a class="btn btn-outline-light px-4 py-2 mt-4" href="/pesan">Pesan Sekarang</a>
     </div>
 </div>
 
@@ -235,7 +235,7 @@
                         <path fill="#3b82f6" d="M7 23q-.825 0-1.412-.587T5 21V3q0-.825.588-1.412T7 1h10q.825 0 1.413.588T19 3v18q0 .825-.587 1.413T17 23zm0-3v1h10v-1zm0-2h10V6H7zM7 4h10V3H7zm0 0V3zm0 16v1z" />
                     </svg>
                     <h4 class="mt-3">Hubungi Kami</h4>
-                    <p>+62 877 2684 7740</p>
+                    <p>+62 8387 2764 001</p>
                 </div>
             </div><!-- End Info Item -->
 

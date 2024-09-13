@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('content')
-<div class="container" style="padding: 9rem 0;">
+<div class="container">
     <main>
         <div class="py-5 text-center">
             <img class="d-block mx-auto mb-4" src="/img/sneakspark-logo-black.png" alt="" width="150" height="150">
@@ -44,8 +44,8 @@
 
                 <form class="card p-2">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code">
-                        <button type="submit" class="btn btn-secondary">Redeem</button>
+                        <input type="text" class="form-control" placeholder="Kode Voucher">
+                        <button type="submit" class="btn btn-secondary">Gunakan Voucher</button>
                     </div>
                 </form>
             </div>
@@ -119,32 +119,10 @@
 
                     <hr class="my-4">
 
-                    <h4>Pembayaran</h4>
-                    <div class="row g-3">
-                        <div class="col-md-12">
-                            <label for="country" class="form-label">Metode Pembayaran</label>
-                            <select class="form-select" id="selectPayment" required="" placeholder="Pilih Metode Pembayaran">
-                                <option value="1">Transfer BCA</option>
-                                <option value="1">Transfer BCA</option>
-                                <option value="1">Transfer BCA</option>
-                                <option value="2">Dijemput</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Metode Pembayaran wajib diisi.
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="my-4">
-
                     <a class="w-100 btn btn-primary btn-lg" href="/pembayaran" type="submit">Lanjut Ke Pembayaran</a>
                 </form>
             </div>
         </div>
     </main>
-
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">© 2024 Sneakspark Shoes Laundry</p>
-    </footer>
 </div>
 @endsection

@@ -50,7 +50,7 @@ class referensiController extends Controller
         ]);
     }
 
-    
+
     public function ubahPelayanan($id)
     {
         $layanan = DB::table('layanans')
@@ -65,7 +65,7 @@ class referensiController extends Controller
             'kategoris' => Kategori::all(),
         ]);
     }
-    
+
     public function indexKategori()
     {
         return view('admin.referensi.pelayanan.kategori', [
@@ -74,7 +74,7 @@ class referensiController extends Controller
             'kategoris' => Kategori::all(),
         ]);
     }
-    
+
     public function ubahKategori($id)
     {
         return view('admin.referensi.pelayanan.ubahKategori', [
@@ -100,6 +100,30 @@ class referensiController extends Controller
             'title' => 'Ubah Data Pegawai',
             'active' => 'ubah-data-pegawai',
             'pegawai' => Pegawai::find($id),
+        ]);
+    }
+
+    public function profilPegawai()
+    {
+        return view('admin.referensi.pegawai.profil', [
+            'title' => 'Profil Pegawai',
+            'active' => 'profil-pegawai',
+        ]);
+    }
+
+    public function ubahProfilPegawai()
+    {
+        return view('admin.referensi.pegawai.ubahProfil', [
+            'title' => 'Ubah Profil Pegawai',
+            'active' => 'ubah-profil-pegawai',
+        ]);
+    }
+
+    public function ubahPasswordPegawai()
+    {
+        return view('admin.referensi.pegawai.ubahPassword', [
+            'title' => 'Ubah Password Pegawai',
+            'active' => 'ubah-password-pegawai',
         ]);
     }
 
@@ -130,7 +154,7 @@ class referensiController extends Controller
 
         return redirect()->route('pegawai')->with('Notification', 'Data Berhasil Ditambahkan!');
     }
-    
+
     public function storeKategori(Request $request)
     {
         DB::table('kategoris')->insertOrIgnore([
@@ -142,7 +166,7 @@ class referensiController extends Controller
 
         return redirect()->route('kategori')->with('Notification', 'Data Berhasil Ditambahkan!');
     }
-    
+
     public function storeLayanan(Request $request)
     {
         $validationData = $request->validate([
@@ -196,7 +220,7 @@ class referensiController extends Controller
 
         return redirect()->route('ubahPegawai', ['id' => $request->idPegawai])->with('Notification', 'Data Berhasil Diperbaharui!');
     }
-    
+
     public function updatePasswordPegawai(Request $request)
     {
         DB::table('pegawais')
@@ -205,10 +229,10 @@ class referensiController extends Controller
             'password' => bcrypt($request->password),
             'updated_at' => now(),
         ]);
-        
+
         return redirect()->route('ubahPegawai', ['id' => $request->idPegawai])->with('Notification', 'Password Berhasil Diperbaharui!');
     }
-    
+
     public function updateKategori(Request $request)
     {
         DB::table('kategoris')
@@ -221,7 +245,7 @@ class referensiController extends Controller
 
         return redirect()->route('ubahKategori', ['id' => $request->idKategori])->with('Notification', 'Data Berhasil Diperbaharui!');
     }
-    
+
     public function updateLayanan(Request $request)
     {
         if ($request->image) {
@@ -247,7 +271,7 @@ class referensiController extends Controller
 
         return redirect()->route('ubahLayanan', ['id' => $request->idLayanan])->with('Notification', 'Data Berhasil Diperbaharui!');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -256,13 +280,13 @@ class referensiController extends Controller
         Pegawai::destroy($id);
         return redirect()->route('pegawai')->with('Notification', 'Data Berhasil Dihapus!');
     }
-    
+
     public function destroyKategori(string $id)
     {
         Kategori::destroy($id);
         return redirect()->route('kategori')->with('Notification', 'Data Berhasil Dihapus!');
     }
-    
+
     public function destroyLayanan(string $id)
     {
         Layanan::destroy($id);

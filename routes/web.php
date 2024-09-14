@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\ExportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,11 +58,19 @@ Route::post('/uKategori', [ReferensiController::class, 'updateKategori']);
 // Pegawai Routes
 Route::get('/pegawai', [ReferensiController::class, 'indexPegawai'])->name('pegawai')->middleware('auth:admin');
 Route::get('/ubahPegawai/{id}', [ReferensiController::class, 'ubahPegawai'])->name('ubahPegawai')->middleware('auth:admin');
+Route::get('/pegawai/profil', [ReferensiController::class, 'profilPegawai'])->name('profilPegawai')->middleware('auth:admin');
+Route::get('/pegawai/profil/ubah/{id}', [ReferensiController::class, 'ubahProfilPegawai'])->name('ubahProfilPegawai')->middleware('auth:admin');
+Route::get('/pegawai/profil/password/{id}', [ReferensiController::class, 'ubahPasswordPegawai'])->name('ubahPasswordPegawai')->middleware('auth:admin');
 
 Route::post('/cPegawai', [ReferensiController::class, 'storePegawai']);
 Route::post('/uPegawai', [ReferensiController::class, 'updatePegawai']);
 Route::post('/uPasswordPegawai', [ReferensiController::class, 'updatePasswordPegawai']);
 Route::get('/dPegawai/{id}', [ReferensiController::class, 'destroyPegawai']);
+
+// Export Routes
+Route::get('/export/faktur', [ExportController::class, 'indexFaktur']);
+Route::get('/export/email', [ExportController::class, 'indexEmail']);
+Route::get('/export/laporan', [ExportController::class, 'indexLaporan']);
 
 
 /*
@@ -74,6 +83,7 @@ Route::get('/dPegawai/{id}', [ReferensiController::class, 'destroyPegawai']);
 Route::get('/pesanan', [TransaksiController::class, 'indexPesanan'])->name('pesanan')->middleware('auth:admin');
 Route::get('/addPesanan', [TransaksiController::class, 'tambahPesanan'])->name('addPesanan')->middleware('auth:admin');
 Route::get('/showPesanan/{id}', [TransaksiController::class, 'showPesanan'])->name('showPesanan')->middleware('auth:admin');
+
 Route::get('/pesanan/ubah/{id}', [TransaksiController::class, 'ubahPesanan'])->name('PesananUbah')->middleware('auth:admin');
 Route::get('/pembayaran/{id}', [TransaksiController::class, 'showPembayaran'])->name('showPembayaran')->middleware('auth:admin');
 
@@ -82,6 +92,8 @@ Route::get('/dKeranjang/{id}/{idPemesan}', [TransaksiController::class, 'destroy
 Route::post('/prosesPesanan', [TransaksiController::class, 'prosesPesanan']);
 Route::post('/cekVocher', [TransaksiController::class, 'cekVocher']);
 Route::post('/strukAdmin', [TransaksiController::class, 'strukAdmin']);
+Route::get('/pesanan/faktur', [TransaksiController::class, 'fakturPesanan']);
+Route::get('/pesanan/laporan', [TransaksiController::class, 'laporanPesanan']);
 
 /*
 |--------------------------------------------------------------------------

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Pegawai;
 use App\Models\Kategori;
@@ -54,7 +55,7 @@ class referensiController extends Controller
     {
         $layanan = DB::table('layanans')
                 ->join('kategoris', 'layanans.id_kategori', '=', 'kategoris.id')
-                ->select('layanans.id', 'layanans.nama_layanan', 'layanans.harga', 'kategoris.nama as kategori', 'kategoris.id as idKategori', 'layanans.deskripsi')
+                ->select('layanans.id', 'layanans.nama_layanan', 'layanans.harga', 'kategoris.nama as kategori', 'kategoris.id as idKategori', 'layanans.deskripsi', 'layanans.image')
                 ->where('layanans.id', $id)
                 ->first();
         return view('admin.referensi.pelayanan.ubahPelayanan', [
@@ -168,8 +169,13 @@ class referensiController extends Controller
 
     public function storeLayanan(Request $request)
     {
+        $validationData = $request->validate([
+            'image' => 'required|mimes:png,jpg,jpeg|file|max:2048',
+        ]);
+
         DB::table('layanans')->insertOrIgnore([
             'id_kategori' => $request->kategori,
+            'image' => $validationData['image'] = $request->file('image')->store('image-layanan', 'public'),
             'nama_layanan' => $request->layanan,
             'harga' => $request->harga,
             'deskripsi' => $request->keterangan,
@@ -242,6 +248,17 @@ class referensiController extends Controller
 
     public function updateLayanan(Request $request)
     {
+        if ($request->image) {
+            $validationData = $request->validate([
+                'image' => 'required|mimes:png,jpg,jpeg|file|max:2048',
+            ]);
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validationData['image'] = $request->file('image')->store('image-layanan', 'public');
+            Layanan::where('id', $request->idLayanan)->update($validationData);
+        }
+
         DB::table('layanans')
             ->where('id', $request->idLayanan)
             ->update([

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+
+use App\Models\Layanan;
 
 class userController extends Controller
 {
@@ -13,7 +16,8 @@ class userController extends Controller
     {
         return view('user.home', [
             'title' => 'Home',
-            'active' => 'home'
+            'active' => 'home',
+            'layanans' => Layanan::all(),
         ]);
     }
 

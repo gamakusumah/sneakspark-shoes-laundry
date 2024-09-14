@@ -69,61 +69,17 @@
     <div class="container">
         <h2 class="text-center mb-5">Layanan</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-3">
+            @foreach ($layanans as $layanan)
             <div class="col">
                 <div class="card h-100 border-0">
-                    <img src="/img/easy-clean.jpg" class="card-img-top img-fluid" height="100" alt="Gambar Layanan">
+                    <img src="{{asset('storage/' . $layanan->image)}}" class="card-img-top img-fluid" height="100" alt="{{$layanan->nama_layanan}}">
                     <div class="card-body px-0">
-                        <h5 class="card-title fw-bold fs-3">Easy Clean</h5>
-                        <p class="card-text">Pembersihan dasar untuk sepatu sehari-hari, menghilangkan kotoran ringan dan debu.</p>
+                        <h5 class="card-title fw-bold fs-3">{{$layanan->nama_layanan}}</h5>
+                        <p class="card-text">{{$layanan->deskripsi}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card h-100 border-0">
-                    <img src="/img/medium-clean.jpg" class="card-img-top rounded-0" alt="Gambar Layanan">
-                    <div class="card-body px-0">
-                        <h5 class="card-title fw-bold fs-3">Medium Clean</h5>
-                        <p class="card-text">Pembersihan mendalam untuk sepatu yang lebih kotor, termasuk noda dan kotoran yang lebih sulit dihilangkan.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 border-0">
-                    <img src="/img/hard-clean.jpg" class="card-img-top rounded-0" alt="Gambar Layanan">
-                    <div class="card-body px-0">
-                        <h5 class="card-title fw-bold fs-3">Hard Clean</h5>
-                        <p class="card-text">Pembersihan intensif untuk sepatu dengan kotoran berat dan noda membandel, menjamin kebersihan maksimal.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 border-0">
-                    <img src="/img/leathering.jpg" class="card-img-top rounded-0" alt="Gambar Layanan">
-                    <div class="card-body px-0">
-                        <h5 class="card-title fw-bold fs-3">Leather Treatment</h5>
-                        <p class="card-text">Perawatan khusus untuk sepatu kulit, termasuk pembersihan, pelembap, dan perlindungan dari kerusakan.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 border-0">
-                    <img src="/img/unyellow.jpg" class="card-img-top rounded-0" alt="Gambar Layanan">
-                    <div class="card-body px-0">
-                        <h5 class="card-title fw-bold fs-3">Unyellowing</h5>
-                        <p class="card-text">Menghilangkan kekuningan pada sepatu putih dan mencerahkan warna agar kembali cerah dan bersih.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 border-0">
-                    <img src="/img/sewing.jpg" class="card-img-top rounded-0" alt="...">
-                    <div class="card-body px-0">
-                        <h5 class="card-title fw-bold fs-3">Sewing Soles</h5>
-                        <p class="card-text">Perbaikan sol sepatu dengan menjahit kembali area yang rusak untuk memperpanjang umur sepatu.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
         <!-- Button trigger modal -->

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreignId('id_vocher');
             $table->integer('diskon');
             $table->integer('nominal');
-            $table->integer('status');
+            $table->string('tipe_pengiriman');
+            $table->string('status');
             $table->timestamps();
         });
     }

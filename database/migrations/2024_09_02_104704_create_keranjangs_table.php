@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('id_pemesan');
             $table->foreignId('id_layanan');
             $table->string('nama_barang');
-            $table->string('tipe_pengiriman');
             $table->string('keterangan');
             $table->string('status');
             $table->timestamps();

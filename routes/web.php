@@ -37,8 +37,8 @@ Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard')->
 */
 
 // Pelanggan Routes
-Route::get('/pelanggan', [ReferensiController::class, 'indexPelanggan']);
-Route::get('/pelanggan/ubah/{id}', [ReferensiController::class, 'ubahPelanggan']);
+Route::get('/pelanggan', [ReferensiController::class, 'indexPelanggan'])->name('pelanggan')->middleware('auth:admin');
+Route::get('/pelanggan/ubah/{id}', [ReferensiController::class, 'ubahPelanggan'])->name('ubahPelanggan')->middleware('auth:admin');
 
 // Pelayanan Routes
 Route::get('/pelayanan', [ReferensiController::class, 'indexPelayanan'])->name('layanan')->middleware('auth:admin');
@@ -74,8 +74,14 @@ Route::get('/dPegawai/{id}', [ReferensiController::class, 'destroyPegawai']);
 Route::get('/pesanan', [TransaksiController::class, 'indexPesanan'])->name('pesanan')->middleware('auth:admin');
 Route::get('/addPesanan', [TransaksiController::class, 'tambahPesanan'])->name('addPesanan')->middleware('auth:admin');
 Route::get('/showPesanan/{id}', [TransaksiController::class, 'showPesanan'])->name('showPesanan')->middleware('auth:admin');
-Route::get('/pesanan/ubah/{id}', [TransaksiController::class, 'ubahPesanan']);
+Route::get('/pesanan/ubah/{id}', [TransaksiController::class, 'ubahPesanan'])->name('PesananUbah')->middleware('auth:admin');
+Route::get('/pembayaran/{id}', [TransaksiController::class, 'showPembayaran'])->name('showPembayaran')->middleware('auth:admin');
 
+Route::post('/keranjangAdmin', [TransaksiController::class, 'storeKeranjang']);
+Route::get('/dKeranjang/{id}/{idPemesan}', [TransaksiController::class, 'destroyKeranjang']);
+Route::post('/prosesPesanan', [TransaksiController::class, 'prosesPesanan']);
+Route::post('/cekVocher', [TransaksiController::class, 'cekVocher']);
+Route::post('/strukAdmin', [TransaksiController::class, 'strukAdmin']);
 
 /*
 |--------------------------------------------------------------------------

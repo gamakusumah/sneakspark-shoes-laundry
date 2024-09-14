@@ -58,9 +58,13 @@
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Pelayanan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/cLayanan" method="POST">
+            <form action="/cLayanan" method="POST" enctype="multipart/form-data">
                 @csrf
             <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Banner layanan</label>
+                        <input type="file" class="form-control" id="inputName" name="image" accept=".png, .jpg, .jpeg" required>
+                    </div>
                     <div class="mb-3">
                         <label for="inputName" class="form-label">Nama Pelayanan</label>
                         <input type="text" class="form-control" id="inputName" name="layanan" required>

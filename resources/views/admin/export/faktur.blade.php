@@ -75,38 +75,36 @@
                 <div class="row mt-5">
 
                     <ul class="list">
-                        <li class="list-item" style="font-size: 18px;"><b>John Doe</b></li>
-                        <li class="list-item"><b>Invoice</b> #12345</li>
-                        <li class="list-item">April 17 2021</li>
+                        <li class="list-item" style="font-size: 18px;"><b>{{$pemesan->nama}}</b></li>
+                        <li class="list-item"><b>Invoice</b> #{{$pesanan->kode_pesanan}}</li>
+                        <li class="list-item">{{$pesanan->created_at}}</li>
                     </ul>
                     <hr>
                 </div>
                 <div class="service-item">
+                    @foreach ($keranjangs as $keranjang)
                     <div>
-                        <div style="margin-bottom: 4px;"><b>Layanan x1</b></div>
-                        <div class="text-secondary">Adidas Samba</div>
+                        <div style="margin-bottom: 4px;"><b>{{$keranjang->nama_layanan}}</b></div>
+                        <div class="text-secondary">{{$keranjang->nama_barang}}</div>
                     </div>
                     <div>
-                        <p>Rp80.000</p>
+                        <p>Rp {{number_format($keranjang->harga,0,',','.')}}</p>
                     </div>
+                    @endforeach
                 </div>
                 <hr>
                 <div style="margin: 16px 0;">
                     <div class="flex">
                         <div>Diskon</div>
-                        <div>-Rp20.000</div>
+                        <div>-Rp {{$pesanan->diskon}}</div>
                     </div>
                     <div class="flex">
-                        <div>Total Pemesanan</div>
-                        <div>Rp200.000</div>
+                        <div>Total</div>
+                        <div>Rp {{number_format($total,0,',','.')}}</div>
                     </div>
                     <div class="flex">
                         <div>Total Bayar</div>
-                        <div>Rp200.000</div>
-                    </div>
-                    <div class="flex">
-                        <div>Kembalian</div>
-                        <div>Rp0</div>
+                        <div>Rp {{number_format($pesanan->nominal,0,',','.')}}</div>
                     </div>
                 </div>
                 <hr style="border: 2px solid black; margin-top: 12px;">

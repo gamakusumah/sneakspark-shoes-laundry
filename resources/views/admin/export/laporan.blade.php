@@ -30,52 +30,40 @@
     <div>
         <div style="text-align: center; margin-bottom: 38px;">
             <h2>Laporan Pendapatan Sneakspark Shoes Laundry</h3>
-            <p style="margin-bottom: 6px;">22 Februari 2024 - 17 Mei 2024</p>
-            <p>Dicetak Oleh : [Nama Pegawai]</p>
+            <p style="margin-bottom: 6px;">{{$priodeAwal}} - {{$priodeAkhir}}</p>
+            <p>Dicetak Oleh : {{ auth('admin')->user()->nama }}</p>
         </div>
 
         <div>
             <table>
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Tanggal</th>
-                        <th>Id Pesanan</th>
-                        <th>Nama Pelanggan</th>
-                        <th>Layanan</th>
+                        <th>Id Transaksi</th>
+                        <th>Tanggal Transaksi</th>
+                        <th>Pelanggan</th>
+                        <th>Total</th>
+                        <th>Diskon</th>
                         <th>Total Pembayaran</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($riwayats as $riwayat)
                     <tr>
-                        <td>1</td>
-                        <td>22 Februari 2024</td>
-                        <td>INV-0001-01</td>
-                        <td>John Doe</td>
-                        <td>Adidas Samba</td>
-                        <td>Rp80.000</td>
+                        <td>{{$riwayat->kode_pesanan}}</td>
+                        <td>{{$riwayat->created_at}}</td>
+                        <td>{{$riwayat->nama}}</td>
+                        <td>{{number_format($riwayat->total,0,',','.')}}</td>
+                        <td>{{$riwayat->diskon}}</td>
+                        <td>{{number_format($riwayat->nominal,0,',','.')}}</td>
+                        <td>{{$riwayat->status}}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>22 Februari 2024</td>
-                        <td>INV-0001-01</td>
-                        <td>John Doe</td>
-                        <td>Adidas Samba</td>
-                        <td>Rp80.000</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>22 Februari 2024</td>
-                        <td>INV-0001-01</td>
-                        <td>John Doe</td>
-                        <td>Adidas Samba</td>
-                        <td>Rp80.000</td>
-                    </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                         <th colspan="5" class="text-end">Total Pendapatan</th>
-                        <th>Rp240.000</td>
+                        <th>Rp {{number_format($total,0,',','.')}}</td>
                     </tr>
                 </tfoot>
             </table>

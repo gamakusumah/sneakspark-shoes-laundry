@@ -96,7 +96,7 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill"></i></div>
                                 Pesanan
                             </a>
-                            <a class="nav-link" href="/pesanan/laporan">
+                            <a class="nav-link" href="/laporan">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-folder-open"></i></div>
                                 Laporan
                             </a>

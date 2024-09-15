@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('no_tlp')->nullable();
             $table->string('email')->nullable();
             $table->string('alamat')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

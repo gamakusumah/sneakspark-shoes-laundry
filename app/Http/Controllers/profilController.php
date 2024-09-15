@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Pemesan;
+use App\Models\Pesanan;
+use App\Models\Detail_pesanan;
+use App\Models\Layanan;
 
 class profilController extends Controller
 {
@@ -26,7 +32,17 @@ class profilController extends Controller
 
     public function riwayatPesanan()
     {
-        return view('user.profil.riwayatPesanan');
+        $cekPemesan = Pemesan::where('id_user',  auth('web')->user()->id)->get();
+        $pesanan = Pesanan::all();
+        $detailPesanan = Detail_pesanan::all();
+        return view('user.profil.riwayatPesanan', [
+            'title' => 'Riwayat Pesanan',
+            'active' => 'riwayat',
+            'pemesans' => $cekPemesan,
+            'pesanans' => $pesanan,
+            'details' => $detailPesanan,
+            'layanans' => Layanan::all(),
+        ]);
     }
 
     /**

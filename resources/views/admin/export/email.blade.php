@@ -74,9 +74,9 @@
 
 <body>
     <div>
-        <p>Dear <b>[Nama Pelanggan]</b></p>
+        <p>Dear <b>{{$bioData->nama}}</b></p>
 
-        <p>Terima kasih telah mempercayakan perawatan sepatu Anda kepada kami di <b>Sneakspark Shoes Laundry</b>. Kami ingin memberitahukan bahwa sepatu Anda telah selesai dicuci dan siap untuk diambil.</p>
+        <p>Terima kasih telah mempercayakan perawatan sepatu Anda kepada kami di <b>Sneakspark Shoes Laundry</b>. Kami ingin memberitahukan bahwa Status Pesanan Kamu <b>{{$pesanan->status}}</b>.</p>
         <p>Kami telah memastikan setiap detail perawatan dilakukan dengan seksama, menggunakan bahan premium dan teknik terbaik untuk memastikan hasil yang maksimal. Kami berharap Anda puas dengan layanan yang kami berikan.</p>
         <p style="margin-top: 32px;">Berikut invoice detail pesanan :</p>
     </div>
@@ -94,38 +94,36 @@
                     <div class="row mt-5">
 
                         <ul class="list">
-                            <li class="list-item" style="font-size: 18px;"><b>John Doe</b></li>
-                            <li class="list-item"><b>Invoice</b> #12345</li>
-                            <li class="list-item">April 17 2021</li>
+                            <li class="list-item" style="font-size: 18px;"><b>{{$bioData->nama}}</b></li>
+                            <li class="list-item"><b>Invoice</b> #{{$pesanan->kode_pesanan}}</li>
+                            <li class="list-item">{{$pesanan->created_at}}</li>
                         </ul>
                         <hr>
                     </div>
+                    @foreach ($detailPesanans as $detail)
                     <div class="service-item">
                         <div>
-                            <div style="margin-bottom: 4px;"><b>Layanan x1</b></div>
-                            <div class="text-secondary">Adidas Samba</div>
+                            <div style="margin-bottom: 4px;"><b>{{$detail->nama_layanan}}</b></div>
+                            <div class="text-secondary">{{$detail->nama_barang}}</div>
                         </div>
                         <div>
-                            <p>Rp80.000</p>
+                            <p>Rp {{number_format($detail->nominal,0,',','.')}}</p>
                         </div>
                     </div>
+                    @endforeach
                     <hr>
                     <div style="margin: 16px 0;">
                         <div class="flex">
                             <div>Diskon</div>
-                            <div>-Rp20.000</div>
+                            <div>-Rp {{$pesanan->diskon}}</div>
                         </div>
                         <div class="flex">
                             <div>Total Pemesanan</div>
-                            <div>Rp200.000</div>
+                            <div>Rp {{number_format($pesanan->total,0,',','.')}}</div>
                         </div>
                         <div class="flex">
                             <div>Total Bayar</div>
-                            <div>Rp200.000</div>
-                        </div>
-                        <div class="flex">
-                            <div>Kembalian</div>
-                            <div>Rp0</div>
+                            <div>Rp {{number_format($pesanan->nominal,0,',','.')}}</div>
                         </div>
                     </div>
                     <hr style="border: 2px solid black; margin-top: 12px;">
@@ -138,7 +136,6 @@
             </div>
         </div>
         <div style="margin-top: 32px;">
-            <p>Anda dapat mengambil sepatu Anda di lokasi kami pada jam operasional atau menghubungi kami untuk layanan pengiriman ke alamat Anda.</p>
             <p>Jika ada pertanyaan atau kebutuhan lain, jangan ragu untuk menghubungi kami melalui <b>083872764001</b> atau <b>[Email Kontak]</b>. Kami selalu siap membantu Anda.</p>
             <p>Terima kasih atas kepercayaan Anda, dan kami berharap dapat terus melayani Anda dengan hasil terbaik!</p>
 

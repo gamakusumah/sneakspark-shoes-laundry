@@ -361,8 +361,16 @@ class transaksiController extends Controller
             return redirect()->route('pembayaranAdmin', ['id' => $request->idPemesan])->with('Notification', 'Vocher Tidak Ditemukan!');
         }
         
-        if ($vocherData->min_order >= $harga) {
+        if ($vocherData->min_order > $harga) {
             return redirect()->route('pembayaranAdmin', ['id' => $request->idPemesan])->with('Notification', 'Minimal orader Kurang!');
+        }
+        
+        if ($vocherData->status == 'Non-Aktif') {
+            return redirect()->route('pembayaranAdmin', ['id' => $request->idPemesan])->with('Notification', 'Vocher Sudah Tidak Berlaku!');
+        }
+        
+        if ($vocherData->jumlah_pakai == '0') {
+            return redirect()->route('pembayaranAdmin', ['id' => $request->idPemesan])->with('Notification', 'Vocher Sudah Habis!');
         }
 
         $nilaiDiskon = $harga * ($vocherData->diskon_persen / 100);

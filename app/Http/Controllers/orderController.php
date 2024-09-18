@@ -154,6 +154,15 @@ class orderController extends Controller
         if ($vocherData->min_order > $harga) {
             return redirect()->route('pesan')->with('Notification', 'Minimal orader Kurang!');
         }
+        
+        if ($vocherData->status == 'Non-Aktif') {
+            return redirect()->route('pembayaranAdmin', ['id' => $request->idPemesan])->with('Notification', 'Vocher Sudah Tidak Berlaku!');
+        }
+        
+        if ($vocherData->jumlah_pakai == '0') {
+            return redirect()->route('pembayaranAdmin', ['id' => $request->idPemesan])->with('Notification', 'Vocher Sudah Habis!');
+        }
+
 
         if ($cekPesanan == '0') {
             // Ambil ID terakhir dari tabel 'pemesans'

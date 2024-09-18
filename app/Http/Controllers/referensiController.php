@@ -10,6 +10,7 @@ use App\Models\Pegawai;
 use App\Models\Kategori;
 use App\Models\Layanan;
 use App\Models\User;
+use App\Models\Vocher;
 
 class referensiController extends Controller
 {
@@ -93,6 +94,7 @@ class referensiController extends Controller
             'pegawais' => Pegawai::all(),
         ]);
     }
+    
 
     public function ubahPegawai($id)
     {
@@ -100,6 +102,25 @@ class referensiController extends Controller
             'title' => 'Ubah Data Pegawai',
             'active' => 'ubah-data-pegawai',
             'pegawai' => Pegawai::find($id),
+        ]);
+    }
+
+    // pegawai Controller
+    public function indexVocher()
+    {
+        return view('admin.referensi.vocher.index', [
+            'title' => 'Vocher',
+            'active' => 'vocher',
+            'vochers' => Vocher::all(),
+        ]);
+    }
+
+    public function showVocher($id)
+    {
+        return view('admin.referensi.vocher.ubah', [
+            'title' => 'Vocher',
+            'active' => 'vocher',
+            'vocher' => Vocher::find($id),
         ]);
     }
 
@@ -126,6 +147,7 @@ class referensiController extends Controller
             'active' => 'ubah-password-pegawai',
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -165,6 +187,22 @@ class referensiController extends Controller
         ]);
 
         return redirect()->route('kategori')->with('Notification', 'Data Berhasil Ditambahkan!');
+    }
+    
+    public function storeVocher(Request $request)
+    {
+        DB::table('vochers')->insertOrIgnore([
+            'kode_vocher' => $request->kode,
+            'jumlah_pakai' => $request->jumlah,
+            'diskon_persen' => $request->diskon,
+            'keterangan' => $request->keterangan,
+            'min_order' => $request->minorder,
+            'status' => $request->status,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('vocher')->with('Notification', 'Data Berhasil Ditambahkan!');
     }
 
     public function storeLayanan(Request $request)
@@ -244,6 +282,23 @@ class referensiController extends Controller
             ]);
 
         return redirect()->route('ubahKategori', ['id' => $request->idKategori])->with('Notification', 'Data Berhasil Diperbaharui!');
+    }
+    
+    public function updateVocher(Request $request)
+    {
+        DB::table('vochers')
+            ->where('id', $request->idVocher)
+            ->update([
+                'kode_vocher' => $request->kode,
+                'jumlah_pakai' => $request->jumlah,
+                'diskon_persen' => $request->diskon,
+                'keterangan' => $request->keterangan,
+                'min_order' => $request->minorder,
+                'status' => $request->status,
+                'updated_at' => now(),
+            ]);
+
+        return redirect()->route('ubahVocher', ['id' => $request->idVocher])->with('Notification', 'Data Berhasil Diperbaharui!');
     }
 
     public function updateLayanan(Request $request)

@@ -81,6 +81,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="/pelayanan">Pelayanan</a>
                                     <a class="nav-link" href="/kategori">Kategori</a>
+                                    <a class="nav-link" href="/vocher">Vocher Diskon</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="/pelanggan">

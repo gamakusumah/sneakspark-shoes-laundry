@@ -55,11 +55,18 @@ Route::get('/dKategori/{id}', [ReferensiController::class, 'destroyKategori']);
 Route::get('/ubahKategori/{id}', [ReferensiController::class, 'ubahKategori'])->name('ubahKategori')->middleware('auth:admin');
 Route::post('/uKategori', [ReferensiController::class, 'updateKategori']);
 
+// vocher
+Route::get('/vocher', [ReferensiController::class, 'indexVocher'])->name('vocher')->middleware('auth:admin');
+Route::get('/ubahVocher/{id}', [ReferensiController::class, 'showVocher'])->name('ubahVocher')->middleware('auth:admin');
+Route::post('/cVocher', [ReferensiController::class, 'storeVocher']);
+Route::post('/uVocher', [ReferensiController::class, 'updateVocher']);
+
 // Pegawai Routes
 Route::get('/pegawai', [ReferensiController::class, 'indexPegawai'])->name('pegawai')->middleware('auth:admin');
 Route::get('/ubahPegawai/{id}', [ReferensiController::class, 'ubahPegawai'])->name('ubahPegawai')->middleware('auth:admin');
+
 Route::get('/pegawai/profil', [ReferensiController::class, 'profilPegawai'])->name('profilPegawai')->middleware('auth:admin');
-Route::get('/pegawai/profil/ubah/{id}', [ReferensiController::class, 'ubahProfilPegawai'])->name('ubahProfilPegawai')->middleware('auth:admin');
+Route::get('/ubahMyProfile', [ReferensiController::class, 'ubahProfilPegawai'])->name('ubahProfilPegawai')->middleware('auth:admin');
 Route::get('/pegawai/profil/password/{id}', [ReferensiController::class, 'ubahPasswordPegawai'])->name('ubahPasswordPegawai')->middleware('auth:admin');
 
 Route::post('/cPegawai', [ReferensiController::class, 'storePegawai']);

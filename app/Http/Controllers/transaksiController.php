@@ -170,11 +170,11 @@ class transaksiController extends Controller
             'pemesan' => Pemesan::where('id', $pesanan->id_pemesan)->first(),
             'total' => $pesanan->nominal,
             'keranjangs' => $keranjangs,
-            'pesanan' => $pesanan
+            'pesanan' => $pesanan,
         ]);
     }
     
-    public function search(Request $request)
+    public function search(Request $request, PemasukanBulanan $chart)
     {
         $action = $request->input('aksi');
 
@@ -192,6 +192,7 @@ class transaksiController extends Controller
                 'title' => 'Laporan',
                 'active' => 'laporan',
                 'riwayats' => $riwayat,
+                'chart' => $chart->build()
             ]);
         }
         

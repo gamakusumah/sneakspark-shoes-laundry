@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\KeranjangUser;
 use App\Models\Vocher;
@@ -99,9 +100,19 @@ class orderController extends Controller
     
     public function pembayaranUser(Request $request)
     {
-        $validationData = $request->validate([
-            'bukti' => 'required|mimes:png,jpg,jpeg|file|max:2048',
+         // Validasi data
+        $validator = Validator::make($request->all(), [
+            'bukti' => 'required|mimes:png,jpg,jpeg|file|max:2048', // Ukuran maksimal 2048KB = 2MB
         ]);
+
+        // Jika validasi gagal, redirect dengan pesan notifikasi
+        if ($validator->fails()) {
+            return redirect()->route('pembayaran', ['id' => $request->idPesanan])
+                            ->withErrors($validator)
+                            ->withInput()
+                            ->with('Notification', 'File terlalu besar, maksimal file 2MB');
+        }
+
         DB::table('pembayarans')->insertOrIgnore([
             'id_pesanan' => $request->idPesanan,
             'nominal' => $request->nominal,
@@ -228,6 +239,9 @@ class orderController extends Controller
             // Memeriksa apakah checkbox cekAlamat tercentang
             if ($request->has('cekAlamat')) {
                 // Jika tercentang, logika berhasil
+                if (auth('web')->user()->alamat == null) {
+                    return redirect()->route('pesan')->with('Notification', 'Alamat kamu masih belum tersimpan di data kami, isi manual!');
+                }
                 DB::table('pemesans')->insertOrIgnore([
                     'id_user' => auth('web')->user()->id,
                     'kode_pesanan' => $kodePesanan,
@@ -299,6 +313,9 @@ class orderController extends Controller
             // Memeriksa apakah checkbox cekAlamat tercentang
             if ($request->has('cekAlamat')) {
                 // Jika tercentang, logika berhasil
+                if (auth('web')->user()->alamat == null) {
+                    return redirect()->route('pesan')->with('Notification', 'Alamat kamu masih belum tersimpan di data kami, isi manual!');
+                }
                 DB::table('pemesans')
                         ->where('id', $request->idPemesan)
                         ->update([

@@ -97,7 +97,7 @@ class orderController extends Controller
 
         return redirect()->route('pesan')->with('Notification', 'Data Berhasil Ditambahkan!');
     }
-    
+
     public function pembayaranUser(Request $request)
     {
          // Validasi data
@@ -128,7 +128,7 @@ class orderController extends Controller
                 'status' => 'Menunggu Konfirmasi',
                 'updated_at' => now(),
             ]);
-        
+
         DB::table('pemesans')
             ->where('id', $request->idPemesan)
             ->update([
@@ -146,7 +146,7 @@ class orderController extends Controller
     {
         //
     }
-    
+
     /**
      * Complex Logic.
      */
@@ -165,11 +165,11 @@ class orderController extends Controller
         if ($vocherData->min_order > $harga) {
             return redirect()->route('pesan')->with('Notification', 'Minimal orader Kurang!');
         }
-        
+
         if ($vocherData->status == 'Non-Aktif') {
             return redirect()->route('pembayaranAdmin', ['id' => $request->idPemesan])->with('Notification', 'Vocher Sudah Tidak Berlaku!');
         }
-        
+
         if ($vocherData->jumlah_pakai == '0') {
             return redirect()->route('pembayaranAdmin', ['id' => $request->idPemesan])->with('Notification', 'Vocher Sudah Habis!');
         }
@@ -217,7 +217,7 @@ class orderController extends Controller
         }
         return redirect()->route('pesan')->with('Notification', 'Vocher Berhasil diclaim!');
     }
-    
+
     public function prosesPesanan(Request $request)
     {
         $harga = $request->total;
@@ -254,6 +254,9 @@ class orderController extends Controller
                     'updated_at' => now(),
                 ]);
             } else {
+                if ($request->alamat == null) {
+                    return redirect()->route('pesan')->with('Notification', 'Alamat wajib diisi!');
+                }
                 // Jika tidak tercentang, logika gagal
                 DB::table('pemesans')->insertOrIgnore([
                     'id_user' => auth('web')->user()->id,
@@ -267,7 +270,7 @@ class orderController extends Controller
                     'updated_at' => now(),
                 ]);
             }
-            
+
             $lastRecordPemesan = Pemesan::latest()->first();
             DB::table('pesanans')->insertOrIgnore([
                 'id_pemesan' => $lastRecordPemesan->id,
@@ -288,7 +291,7 @@ class orderController extends Controller
             // Menghitung jumlah data yang ditemukan
             $jumlahData = $dataKeranjang->count();
 
-            for ($i=0; $i < $jumlahData; $i++) { 
+            for ($i=0; $i < $jumlahData; $i++) {
                 $hargaLayanan = Layanan::where('id', $dataKeranjang[$i]->id_layanan)->first();
                 DB::table('detail_pesanans')->insertOrIgnore([
                     'id_pesanan' => $lastPesanan->id,
@@ -323,6 +326,9 @@ class orderController extends Controller
                             'updated_at' => now(),
                         ]);
             } else {
+                if ($request->alamat == null) {
+                    return redirect()->route('pesan')->with('Notification', 'Alamat wajib diisi!');
+                }
                 // Jika tidak tercentang, logika gagal
                 DB::table('pemesans')
                         ->where('id', $request->idPemesan)
@@ -345,7 +351,7 @@ class orderController extends Controller
             // Menghitung jumlah data yang ditemukan
             $jumlahData = $dataKeranjang->count();
 
-            for ($i=0; $i < $jumlahData; $i++) { 
+            for ($i=0; $i < $jumlahData; $i++) {
                 $hargaLayanan = Layanan::where('id', $dataKeranjang[$i]->id_layanan)->first();
                 DB::table('detail_pesanans')->insertOrIgnore([
                     'id_pesanan' => $request->idPesanan,
@@ -360,7 +366,7 @@ class orderController extends Controller
                 KeranjangUser::destroy($dataKeranjang[$i]->id);
             }
 
-            
+
             $vocher = Vocher::where('id', $request->idVocher)->first();
             $penguranganVocher = $vocher->jumlah_pakai - 1;
             DB::table('vochers')
@@ -371,7 +377,7 @@ class orderController extends Controller
             ]);
             return redirect()->route('pembayaran', ['id' => $request->idPesanan])->with('Notification', 'Pesanan Berhasil Dibuat, Silahkan Lakukan Pembayaran!');
         }
-        
+
     }
 
     /**

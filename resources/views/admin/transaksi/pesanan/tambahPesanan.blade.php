@@ -36,10 +36,10 @@
                     <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="inputNote" class="form-label">Keterangan</label>
-                                <textarea class="form-control" id="inputNote" name="keterangan" required rows="5"></textarea>
+                                <textarea class="form-control" id="inputNote" name="keterangan" rows="5"></textarea>
                             </div>
-                    </div>    
-                </div>                
+                    </div>
+                </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>

@@ -34,15 +34,15 @@
                         </div>
                         <div class="d-flex justify-content-center px-4 flex-column border-start">
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>Total</span>
+                                <span style="display: inline-block; width: 120px">Total</span>
                                 <strong>Rp {{number_format($pesanan->total,0,',','.')}}</strong>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>Diskon</span>
-                                <strong>Rp {{number_format($pesanan->diskon,0,',','.')}}</strong>
+                                <span style="display: inline-block; width: 120px">Diskon</span>
+                                <strong>-Rp {{number_format($pesanan->diskon,0,',','.')}}</strong>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>Total Bayar</span>
+                                <span style="display: inline-block; width: 120px">Total Bayar</span>
                                 <strong>Rp {{number_format($pesanan->nominal,0,',','.')}}</strong>
                             </li>
                         </div>
@@ -51,7 +51,7 @@
             @endif
         @endforeach
     @empty
-        
+
     @endforelse
 
 </div>

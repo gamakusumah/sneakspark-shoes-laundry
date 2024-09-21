@@ -165,7 +165,7 @@
                         </div>
                         <div class="col-12">
                             <label for="address" class="form-label">Alamat Pengiriman</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Isi Alamat" name="alamat">
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Isi Alamat" name="alamat" value="{{ auth('web')->user()->alamat }}">
                             <div class="invalid-feedback">
                                 Alamat Pengiriman wajib diisi.
                             </div>

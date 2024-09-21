@@ -12,7 +12,11 @@
                             <div>{{$pesanan->created_at}}</div>
                             <div class="text-secondary">- {{$pesanan->kode_pesanan}}</div>
                         </div>
+                        @if ($pesanan->status == "Pembayaran")
+                            <a href="/pembayaran/{{$pesanan->id_pemesan}}" class="btn btn-warning">Bayar Sekarang</a>                            
+                        @else
                         <span class="badge rounded-pill bg-success">{{$pesanan->status}}</span>
+                        @endif
                     </div>
                     <hr />
                     <div class="d-flex flex-row justify-content-between">

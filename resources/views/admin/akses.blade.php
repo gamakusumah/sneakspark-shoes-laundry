@@ -8,7 +8,7 @@
         <meta name="author" content="" />
 
         <link rel="icon" href="{{asset('img/sneakspark-logo.png')}}" type="image/x-icon">
-        
+
         <title>Sneakspark Shoes | {{$title}}</title>
         <link href="{{asset('vendor/css/styles.css')}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -21,7 +21,7 @@
             <div class="toast-container top-0 end-0 p-3">
                 <div class="show toast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header b-primary">
-                    <strong class="me-auto">Notofikasi Baru!</strong>
+                    <strong class="me-auto">Notifikasi Baru!</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                     <div class="toast-body">

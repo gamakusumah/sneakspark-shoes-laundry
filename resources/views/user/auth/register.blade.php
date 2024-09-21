@@ -15,15 +15,15 @@
             <label for="noHandphone">No. Handphone</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="nama@contoh.com">
+            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="nama@contoh.com" required>
             <label for="inputEmail">Email</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required>
             <label for="inputPassword">Password</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="inputRetypePassword" name="confPassword" placeholder="Ketik Ulang Password">
+            <input type="password" class="form-control" id="inputRetypePassword" name="confPassword" placeholder="Ketik Ulang Password" required>
             <label for="inputRetypePassword">Ketik Ulang Password</label>
         </div>
 

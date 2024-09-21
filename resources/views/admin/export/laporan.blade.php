@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        :root {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -53,9 +57,9 @@
                         <td>{{$riwayat->kode_pesanan}}</td>
                         <td>{{$riwayat->created_at}}</td>
                         <td>{{$riwayat->nama}}</td>
-                        <td>{{number_format($riwayat->total,0,',','.')}}</td>
+                        <td>Rp{{number_format($riwayat->total,0,',','.')}}</td>
                         <td>{{$riwayat->diskon}}</td>
-                        <td>{{number_format($riwayat->nominal,0,',','.')}}</td>
+                        <td>Rp{{number_format($riwayat->nominal,0,',','.')}}</td>
                         <td>{{$riwayat->status}}</td>
                     </tr>
                     @endforeach
@@ -63,7 +67,7 @@
                 <tfoot>
                     <tr>
                         <th colspan="5" class="text-end">Total Pendapatan</th>
-                        <th>Rp {{number_format($total,0,',','.')}}</td>
+                        <th colspan="2">Rp {{number_format($total,0,',','.')}}</td>
                     </tr>
                 </tfoot>
             </table>

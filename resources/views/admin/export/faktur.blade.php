@@ -38,26 +38,14 @@
         }
         .service-item {
             display: flex;
-            justify-content: space-between;
-            align-items: start;
             padding: 8px 0;
         }
         .text-secondary {
             color: #6c757d;
         }
-        .flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4px;
-        }
-        .thanks {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin-top: 48px;
-            margin-bottom: 24px;
+
+        table {
+            width: 100%;
         }
     </style>
 </head>
@@ -73,7 +61,6 @@
                 </div>
 
                 <div class="row mt-5">
-
                     <ul class="list">
                         <li class="list-item" style="font-size: 18px;"><b>{{$pemesan->nama}}</b></li>
                         <li class="list-item"><b>Invoice</b> #{{$pesanan->kode_pesanan}}</li>
@@ -81,38 +68,39 @@
                     </ul>
                     <hr>
                 </div>
-                <div class="service-item">
+                <table>
                     @foreach ($keranjangs as $keranjang)
-                    <div>
-                        <div style="margin-bottom: 4px;"><b>{{$keranjang->nama_layanan}}</b></div>
-                        <div class="text-secondary">{{$keranjang->nama_barang}}</div>
-                    </div>
-                    <div>
-                        <p>Rp {{number_format($keranjang->harga,0,',','.')}}</p>
-                    </div>
+                    <tr>
+                        <td><b>{{$keranjang->nama_layanan}}</b></td>
+                        <td align="right">Rp{{number_format($keranjang->harga,0,',','.')}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary" style="padding-bottom: 8px">{{$keranjang->nama_barang}}</td>
+                    </tr>
                     @endforeach
-                </div>
+                </table>
                 <hr>
                 <div style="margin: 16px 0;">
-                    <div class="flex">
-                        <div>Diskon</div>
-                        <div>-Rp {{$pesanan->diskon}}</div>
-                    </div>
-                    <div class="flex">
-                        <div>Total</div>
-                        <div>Rp {{number_format($total,0,',','.')}}</div>
-                    </div>
-                    <div class="flex">
-                        <div>Total Bayar</div>
-                        <div>Rp {{number_format($pesanan->nominal,0,',','.')}}</div>
-                    </div>
+                    <table>
+                        <tr>
+                            <td>Diskon</td>
+                            <td align="right">-Rp{{$pesanan->diskon}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td align="right">Rp{{number_format($total,0,',','.')}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total Bayar</td>
+                            <td align="right">Rp {{number_format($pesanan->nominal,0,',','.')}}</td>
+                        </tr>
+                    </table>
                 </div>
                 <hr style="border: 2px solid black; margin-top: 12px;">
-                <div class="thanks">
-                    <span>Terima kasih</span>
-                    <span>atas kepercayaan Anda</span>
+                <div style="text-align: center; margin: 32px 0;">
+                    <div>Terima kasih</div>
+                    <div>atas kepercayaan Anda</div>
                 </div>
-
             </div>
         </div>
     </div>

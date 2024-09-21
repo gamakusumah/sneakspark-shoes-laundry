@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-xl-10 mb-3">
                     <div class="fw-bold">Layanan x1</div>
-                    <div class="text-secondary">Adidas Samba</div>
+                    <div class="text-secondary">Nama Sepatu</div>
                 </div>
                 <div class="col-xl-2">
                     <p class="float-end">Rp80.000</p>
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-xl-10 mb-3">
                     <div class="fw-bold">Layanan x1</div>
-                    <div class="text-secondary">Adidas Samba</div>
+                    <div class="text-secondary">Nama Sepatu</div>
                 </div>
                 <div class="col-xl-2">
                     <p class="float-end">Rp80.000</p>
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-xl-10 mb-3">
                     <div class="fw-bold">Layanan x1</div>
-                    <div class="text-secondary">Adidas Samba</div>
+                    <div class="text-secondary">Nama Sepatu</div>
                 </div>
                 <div class="col-xl-2">
                     <p class="float-end">Rp80.000</p>
@@ -101,21 +101,21 @@
                     <td>1</td>
                     <td>22 Februari 2024</td>
                     <td>John Doe</td>
-                    <td>Adidas Samba</td>
+                    <td>Nama Sepatu</td>
                     <td>Rp80.000</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>22 Februari 2024</td>
                     <td>John Doe</td>
-                    <td>Adidas Samba</td>
+                    <td>Nama Sepatu</td>
                     <td>Rp80.000</td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>22 Februari 2024</td>
                     <td>John Doe</td>
-                    <td>Adidas Samba</td>
+                    <td>Nama Sepatu</td>
                     <td>Rp80.000</td>
                 </tr>
             </tbody>
